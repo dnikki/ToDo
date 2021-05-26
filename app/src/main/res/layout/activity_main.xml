@@ -8,9 +8,10 @@
     >
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fullname"
+        android:id="@+id/fullnamelayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,37 +20,41 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fullname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Fullname"/>
+            android:hint="@string/fullname"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/username"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginHorizontal="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/fullname"
-        app:layout_constraintStart_toStartOf="@+id/fullname"
-        app:layout_constraintEnd_toEndOf="@+id/fullname">
+        app:layout_constraintTop_toBottomOf="@+id/fullnamelayout"
+        app:layout_constraintStart_toStartOf="@+id/fullnamelayout"
+        app:layout_constraintEnd_toEndOf="@+id/fullnamelayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:hint="Username"
+            android:id="@+id/username"
+            android:hint="@string/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/submit"
-        android:text="Submit"
+        android:text="@string/submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_marginBottom="20dp"
         android:layout_marginHorizontal="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/fullname"
-        app:layout_constraintEnd_toEndOf="@+id/fullname"/>
+        app:layout_constraintStart_toStartOf="@+id/fullnamelayout"
+        app:layout_constraintEnd_toEndOf="@+id/fullnamelayout"
+        android:onClick="login"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
