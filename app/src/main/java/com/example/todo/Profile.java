@@ -3,6 +3,8 @@ package com.example.todo;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,8 +17,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.todo.adapter.NotesAdapter;
+import com.example.todo.model.Notes;
+
+import java.util.ArrayList;
+
 public class Profile extends AppCompatActivity {
-    TextView title,description;
+    ArrayList<Notes> notesArrayList=new ArrayList<>();
+    RecyclerView recyclerView;
     SharedPreferences sharedPreferences;
 
     @Override
@@ -41,9 +49,7 @@ public class Profile extends AppCompatActivity {
     }
 
     private void init() {
-        title=findViewById(R.id.title);
-        description=findViewById(R.id.description);
-
+        recyclerView=findViewById(R.id.recyclerView);
         sharedPreferences=getSharedPreferences(Pref_Constant.PREF_NAME,MODE_PRIVATE);
     }
 
@@ -63,12 +69,28 @@ public class Profile extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                title.setText(titled.getText().toString());
-                description.setText(descriptiond.getText().toString());
+                String title =titled.getText().toString();
+                String description=descriptiond.getText().toString();
+                Notes notes=new Notes();
+                notes.setTitle(title);
+                notes.setDescription(description);
+                notesArrayList.add(notes);
+
+                setupRecyclerView();
+
                 dialog.hide();
 
             }
         });
+
+    }
+
+    private void setupRecyclerView() {
+        NotesAdapter notesAdapter=new NotesAdapter(notesArrayList);
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(notesAdapter);
 
     }
 }
