@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.todo.Profile;
 import com.example.todo.R;
+import com.example.todo.interfaces.ItemClickListner;
 import com.example.todo.model.Notes;
 
 import java.util.List;
@@ -17,8 +18,10 @@ import java.util.List;
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> {
 
     List<Notes> noteslist;
-    public NotesAdapter(List<Notes> notes){
+    ItemClickListner itemClickListner;
+    public NotesAdapter(List<Notes> notes,ItemClickListner itemClickListner){
         this.noteslist=notes;
+        this.itemClickListner=itemClickListner;
 
     }
 
@@ -32,9 +35,15 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder( NotesAdapter.ViewHolder holder, int position) {
-        Notes notes= noteslist.get(position);
+        final Notes notes= noteslist.get(position);
         holder.titleView.setText(notes.getTitle());
         holder.descriptionView.setText(notes.getDescription());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemClickListner.onClick(notes);
+            }
+        });
     }
 
     @Override

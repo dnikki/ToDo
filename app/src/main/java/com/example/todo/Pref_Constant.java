@@ -5,5 +5,7 @@ public class Pref_Constant {
     public static String FULL_NAME="Fullname";
     public static String USER_NAME="Username";
     public static String IS_LOGGED_IN="LoginStatus";
+    public static String TITLE="Title";
+    public static String DESCRIPTION="Description";
 
 }

@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.todo.adapter.NotesAdapter;
+import com.example.todo.interfaces.ItemClickListner;
 import com.example.todo.model.Notes;
 
 import java.util.ArrayList;
@@ -71,10 +72,15 @@ public class Profile extends AppCompatActivity {
             public void onClick(View v) {
                 String title =titled.getText().toString();
                 String description=descriptiond.getText().toString();
+                if(!TextUtils.isEmpty(title) && !TextUtils.isEmpty(description) ){
                 Notes notes=new Notes();
                 notes.setTitle(title);
                 notes.setDescription(description);
                 notesArrayList.add(notes);
+                }
+                else{
+                    Toast.makeText(Profile.this,"Title and Desription cannot be empty.",Toast.LENGTH_SHORT).show();
+                }
 
                 setupRecyclerView();
 
@@ -86,7 +92,18 @@ public class Profile extends AppCompatActivity {
     }
 
     private void setupRecyclerView() {
-        NotesAdapter notesAdapter=new NotesAdapter(notesArrayList);
+
+        ItemClickListner itemClickListner=new ItemClickListner() {
+            @Override
+            public void onClick(Notes notes) {
+                Intent intent=new Intent(Profile.this,DetailActivity.class);
+                intent.putExtra(Pref_Constant.TITLE,notes.getTitle());
+                intent.putExtra(Pref_Constant.DESCRIPTION,notes.getDescription());
+                startActivity(intent);
+
+            }
+        };
+        NotesAdapter notesAdapter=new NotesAdapter(notesArrayList,itemClickListner);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
