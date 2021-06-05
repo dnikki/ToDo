@@ -1,9 +1,11 @@
-package com.example.todo
+package com.example.todo.view
 
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.todo.R
+import com.example.todo.constatnts.Pref_Constant
 
 class SplashScreenActivity : AppCompatActivity() {
     lateinit var sharedPreferences: SharedPreferences

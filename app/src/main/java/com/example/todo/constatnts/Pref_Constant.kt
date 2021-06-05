@@ -1,4 +1,4 @@
-package com.example.todo
+package com.example.todo.constatnts
 
 object Pref_Constant {
     @JvmField

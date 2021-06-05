@@ -1,4 +1,4 @@
-package com.example.todo
+package com.example.todo.view
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -13,7 +13,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.todo.R
 import com.example.todo.adapter.NotesAdapter
+import com.example.todo.constatnts.Pref_Constant
 import com.example.todo.interfaces.ItemClickListner
 import com.example.todo.model.Notes
 import java.util.*

@@ -1,4 +1,4 @@
-package com.example.todo
+package com.example.todo.view
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -9,6 +9,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.todo.R
+import com.example.todo.constatnts.Pref_Constant
 
 class MainActivity : AppCompatActivity() {
     var fullname: EditText? = null
