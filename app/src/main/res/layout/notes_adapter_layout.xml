@@ -9,18 +9,28 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
     <TextView
         android:layout_margin="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:id="@+id/textViewtitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/checkbox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
     <TextView
-        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/textViewdescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
